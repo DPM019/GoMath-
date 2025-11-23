@@ -828,10 +828,11 @@ const DATA = {
         const winSnd = new Audio('win.mp3');
         const loseSnd = new Audio('lose.mp3'); 
         const niceSnd = new Audio('nice.mp3'); // Added nice.mp3
+        const lolSnd = new Audio('lol.mp3');
 
         function playBGM() {
             if (bgmSnd.paused) {
-                bgmSnd.volume = 0.25; 
+                bgmSnd.volume = 0.15; 
                 bgmSnd.play().catch(e => console.warn("BGM blocked:", e));
             }
         }
@@ -852,6 +853,7 @@ const DATA = {
                 case 'win': sfx = winSnd; break;
                 case 'lose': sfx = loseSnd; break;
                 case 'nice': sfx = niceSnd; break; // Added case for nice
+                case 'lol' : sfx = lolSnd; break; 
                 default: return;
             }
             if (sfx) {
@@ -996,18 +998,31 @@ const DATA = {
             // Determine result sound & message
             if (score === total) {
                 // Perfect
-                message.innerHTML = `🎉 ACE! PERFECT SCORE! 🎉<br>Score: ${score}/${total}`;
+                message.innerHTML = `🎉 PERFECT SCORE! 🎉<br>Score: ${score}/${total}`;
                 playEffect('win');
                 startConfetti();
+
+            } else if (score === 19) {
+                // One point away
+                message.innerHTML = `😮 1 MORE POINT LEFT BRUH<br>Score: ${score}/${total}`;
+                playEffect('lol');
+
+            } else if (score > 15) {
+                // Over 15
+                message.innerHTML = `👍 Nice Try!<br>Score: ${score}/${total}`;
+                playEffect('nice');
+
             } else if (score === 0) {
                 // Zero
                 message.innerHTML = `😢 Better luck next game!<br>Score: ${score}/${total}`;
                 playEffect('lose');
+
             } else {
                 // Partial (Not Bad)
                 message.innerHTML = `🙂 Not Bad!<br>Your Score: ${score}/${total}`;
-                playEffect('nice'); // 'nice' type triggers nice.mp3
+                playEffect('nice');
             }
+
 
             questionArea.style.display = 'none';
             popup.style.display = 'flex';
