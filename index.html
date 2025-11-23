@@ -832,7 +832,7 @@ const DATA = {
 
         function playBGM() {
             if (bgmSnd.paused) {
-                bgmSnd.volume = 100; 
+                bgmSnd.volume = 0.04; 
                 bgmSnd.play().catch(e => console.warn("BGM blocked:", e));
             }
         }
@@ -1075,3 +1075,4 @@ const DATA = {
 </body>
 
 </html> 
+
