@@ -1012,19 +1012,19 @@ const DATA = {
                 message.innerHTML = `👍 Nice Try!<br>Score: ${score}/${total}`;
                 playEffect('nice');
 
-            }  else if (score < 15) 
-                // Partial (Not Bad)
-                message.innerHTML = `🙂 Not Bad!<br>Your Score: ${score}/${total}`;
+             } else if (score < 15) {
+                // Under 15
+                message.innerHTML = `🙂 There's still room for improvement<br>Score: ${score}/${total}`;
                 playEffect('nice');
 
             } else if (score === 0) {
                 // Zero
                 message.innerHTML = `😢 Better luck next game!<br>Score: ${score}/${total}`;
                 playEffect('lose');
-                
+
             } else {
                 // Partial (Not Bad)
-                message.innerHTML = `🙂 There's still some room for improvement<br>Your Score: ${score}/${total}`;
+                message.innerHTML = `🙂 Not Bad!<br>Your Score: ${score}/${total}`;
                 playEffect('nice');
             }
 
@@ -1078,7 +1078,4 @@ const DATA = {
         }
     </script>
 </body>
-
 </html> 
-
-
